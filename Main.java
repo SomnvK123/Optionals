@@ -58,6 +58,18 @@ public class Main {
                             find.forEach(user -> System.out.println(" - " + user));
                         }
                     }
+
+                    case GET_USER_BY_EMAIL -> {
+                        String email = sc.nextLine();
+                        System.out.println("Email domain: " + email);
+                        List<User> find = manager.findUsersByEmailDomain(email);
+                        if (find.isEmpty()) {
+                            System.out.println("No user found in email domain: " + email);
+                        } else {
+                            System.out.println("Found users in email domain " + email + ":");
+                            find.forEach(user -> System.out.println(" - " + user));
+                        }
+                    }
                     case EXIT -> {
                         System.out.println("Exit");
                         return; // Exit the loop & program

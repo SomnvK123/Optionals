@@ -57,5 +57,4 @@ public class User {
                 ", address=" + address.map(Address::toString).orElse("N/A") +
                 '}';
     }
-
 }
