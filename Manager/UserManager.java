@@ -2,6 +2,7 @@ package Manager;
 
 import Entity.*;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class UserManager {
     private static final Map<String, User> users = new HashMap<>(); // Map to store users by ID
@@ -16,11 +17,18 @@ public class UserManager {
 
     public Optional<User> getUserEmailDomain(User user) {
         return users.values().stream()
-                .filter(u -> u.getEmail().endsWith("@example.com")) // Filter users by email domain
+                .filter(u -> u.getEmail().endsWith("@gmail.com")) // Filter users by email domain
                 .findFirst(); // Return the first user found with the specified domain
     }
 
     public Optional<String> getUserCity(User user) {
         return user.getAddress().map(Address::getCity); // Get the city from the user's address
+    }
+
+    public List<User> findUserByCity(String city) {
+        return users.values().stream().filter(
+                user -> user.getAddress().map(Address::getCity)
+                        .map(c -> c.equalsIgnoreCase(city)).orElse(false)
+        ).collect(Collectors.toList());
     }
 }

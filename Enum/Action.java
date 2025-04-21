@@ -5,6 +5,7 @@ public enum Action {
     FIND_USER(2, "FIND_USER"),
     GET_EMAIL_DOMAIN(3, "GET_EMAIL_DOMAIN"),
     GET_CITY(4, "GET_CITY"),
+    GET_USER_BY_CITY(5, "GET_USER_BY_CITY"),
     EXIT(0, "EXIT");
 
     private final int id;

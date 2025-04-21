@@ -30,7 +30,7 @@ public class Main {
                                         () -> System.out.println("User not found."));
                     }
                     case GET_EMAIL_DOMAIN -> {
-                        System.out.print("📧 Enter user ID to get email domain: ");
+                        System.out.print("Enter user ID to get email domain: ");
                         String id = sc.nextLine();
                         manager.findUserById(id)
                                 .flatMap(manager::getUserEmailDomain)
@@ -47,6 +47,17 @@ public class Main {
                                         city -> System.out.println("City: " + city),
                                         () -> System.out.println("Could not retrieve city."));
                     }
+                    case GET_USER_BY_CITY -> {
+                        System.out.print("Enter city to search user: ");
+                        String city = sc.nextLine();
+                        List<User> find = manager.findUserByCity(city);
+                        if (find.isEmpty()) {
+                            System.out.println("No user found in city: " + city);
+                        } else {
+                            System.out.println("Found users in city " + city + ":");
+                            find.forEach(user -> System.out.println(" - " + user));
+                        }
+                    }
                     case EXIT -> {
                         System.out.println("Exit");
                         return; // Exit the loop & program
@@ -59,12 +70,10 @@ public class Main {
     }
 
     private static void showMenu() {
-        System.out.println("\n======= USER MANAGEMENT MENU =======");
-        System.out.println("1. Add user");
-        System.out.println("2. Find user by ID");
-        System.out.println("3. Get user email domain");
-        System.out.println("4. Get user city");
-        System.out.println("5. Exit");
+        System.out.println("\nUSER MANAGEMENT MENU");
+        for (Action action : Action.values()) {
+            System.out.println(action.getId() + ": " + action.getName());
+        }
         System.out.print("Enter your choice: ");
     }
 
