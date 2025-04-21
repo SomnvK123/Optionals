@@ -65,7 +65,7 @@ public class Main {
         System.out.println("3. Get user email domain");
         System.out.println("4. Get user city");
         System.out.println("5. Exit");
-        System.out.print("👉 Enter your choice: ");
+        System.out.print("Enter your choice: ");
     }
 
     private static User createUserFromInput(Scanner sc) {
