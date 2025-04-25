@@ -38,7 +38,7 @@ public class UserManager {
     public List<User> findUsersByEmailDomain(String domain) {
         return users.values().stream()
                 .filter(user -> getUserEmailDomain(user)
-                        .map(d -> d.equals(domain))
+                        .map(d -> d.equalsIgnoreCase(domain))
                         .orElse(false))
                 .collect(Collectors.toList());
     }

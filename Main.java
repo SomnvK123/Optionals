@@ -60,8 +60,8 @@ public class Main {
                     }
 
                     case GET_USER_BY_EMAIL -> {
+                        System.out.print("Email domain: ");
                         String email = sc.nextLine();
-                        System.out.println("Email domain: " + email);
                         List<User> find = manager.findUsersByEmailDomain(email);
                         if (find.isEmpty()) {
                             System.out.println("No user found in email domain: " + email);
