@@ -72,7 +72,7 @@ public class Main {
                     }
                     case EXIT -> {
                         System.out.println("Exit");
-                        return; // Exit the loop & program
+                        return;
                     }
                 }
             } catch (Exception e) {

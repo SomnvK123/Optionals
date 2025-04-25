@@ -16,11 +16,12 @@ public class UserManager {
                 .filter(user -> user.getId().equals(id)).findFirst(); // Find user by ID
     }
 
-    public Optional<User> getUserEmailDomain(User user) {
-        return users.values().stream() // get all user duoi dang Stream
-                .filter(u -> u.getEmail().endsWith("@gmail.com")) // Filter users by email domain
-                .findFirst(); // Return the first user
-    }
+    public Optional<String> getUserEmailDomain(User user) {
+        return Optional.ofNullable(user.getEmail()) // do user.getEmail() tra ve String nen phai boc trong Optional moi
+                                                    // dung cac ham kia duoc
+                .filter(email -> email.contains("@"))
+                .map(email -> email.substring(email.indexOf("@") + 1));
+    } // kkk
 
     public Optional<String> getUserCity(User user) {
         return user.getAddress().map(Address::getCity); // Get the city from the user's address
